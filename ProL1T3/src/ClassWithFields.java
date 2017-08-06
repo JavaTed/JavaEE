@@ -2,7 +2,7 @@ public class ClassWithFields {
     @Save
     private int a;
     @Save
-    private long b_b;
+    private long b;
     @Save
     private double c;
     @Save
@@ -14,7 +14,7 @@ public class ClassWithFields {
     public ClassWithFields(int a, long b, double c, String name) {
         this.name = name;
         this.a = a;
-        this.b_b = b;
+        this.b = b;
         this.c = c;
     }
 
@@ -22,7 +22,7 @@ public class ClassWithFields {
     public String toString() {
         return "ClassWithFields{" +
                 "a=" + a +
-                ", b_b=" + b_b +
+                ", b_b=" + b +
                 ", c=" + c +
                 ", name='" + name + '\'' +
                 '}';
