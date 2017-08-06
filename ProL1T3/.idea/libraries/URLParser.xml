@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="URLParser">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../ProcessURL/out/artifacts/URLParser/URLParser.jar!/META-INF" />
+      <root url="file://$PROJECT_DIR$/../../ProcessURL/out/artifacts/URLParser" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../ProcessURL/out/artifacts/URLParser" recursive="false" />
+    <jarDirectory url="jar://$PROJECT_DIR$/../../ProcessURL/out/artifacts/URLParser/URLParser.jar!/META-INF" recursive="false" />
+  </library>
+</component>
