@@ -17,6 +17,36 @@ public class UserQuestionnaire {
         this.answer = answer;
     }
 
+    public class UserInfo{
+
+        public String getName() {
+            return UserQuestionnaire.this.name;
+        }
+
+        public String getSurname() {
+            return UserQuestionnaire.this.surname;
+        }
+
+        public int getAge() {
+            return UserQuestionnaire.this.age;
+        }
+    }
+
+    public UserInfo getUserInfo() {
+        return new UserInfo();
+    }
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     public ArrayList<Answer> getAnswers() {
         return answer;
     }

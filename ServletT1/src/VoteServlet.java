@@ -1,4 +1,5 @@
 import com.company.Answer;
+import com.company.UserQuestionnaire;
 import com.company.VoteService;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +11,6 @@ import java.util.*;
 public class VoteServlet extends javax.servlet.http.HttpServlet {
 
     VoteService vs = VoteService.getInstance();
-    Map<String,ArrayList<Answer>> userAnswers = new HashMap<>();
-    ArrayList<Answer> allAnswers = new ArrayList<Answer>();
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -30,6 +29,10 @@ public class VoteServlet extends javax.servlet.http.HttpServlet {
                 myAnswers.add(new Answer(user,i,Integer.parseInt(request.getParameter("question"+i))));
             }
             vs.addUserAnswers(user,name,surname,age,myAnswers);
+            UserQuestionnaire.UserInfo ui = vs.getUserInfo(user);
+            request.setAttribute("name",ui.getName());
+            request.setAttribute("surname",ui.getSurname());
+            request.setAttribute("age",ui.getAge());
         }
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");

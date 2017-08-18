@@ -13,7 +13,6 @@ public class VoteService {
     ArrayList<Answer> allAnswers = new ArrayList<Answer>();
 
     private VoteService() {
-
     }
 
     public static VoteService getInstance() {
@@ -39,7 +38,9 @@ public class VoteService {
                 .forEach(t->sb.append("<BR>Question "+t.getKey().replace(":",", choice ")+" =  "+t.getValue()+" time(s)"));
         return sb;
     }
-
+    public UserQuestionnaire.UserInfo getUserInfo(String user){
+        return userAnswers.get(user).getUserInfo();
+    }
     public StringBuilder getUserStat(String user){
         return new StringBuilder(userAnswers.get(user).toString());
     }

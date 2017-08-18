@@ -6,6 +6,7 @@
 <%VoteService vs = VoteService.getInstance();
   String user = (String)session.getAttribute("user_login");
 
+
   String voted = vs.isUserVoted(user)?"1":"0";
 %>
   <head>

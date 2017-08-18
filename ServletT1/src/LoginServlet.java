@@ -1,5 +1,8 @@
+import com.company.UserQuestionnaire;
+import com.company.VoteService;
 import com.company.credentials.CredentialService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +14,7 @@ import java.io.IOException;
 @WebServlet(name = "com.company.LoginServlet")
 public class LoginServlet extends HttpServlet {
     private CredentialService credService;
+    VoteService vs = VoteService.getInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
@@ -18,7 +22,15 @@ public class LoginServlet extends HttpServlet {
         if (credService.checkCredentials(login,password)){
             HttpSession session = request.getSession(true);
             session.setAttribute("user_login", login);
-            response.sendRedirect("index.jsp");
+
+            if (vs.isUserVoted(login)){
+                UserQuestionnaire.UserInfo ui = vs.getUserInfo(login);
+                request.setAttribute("name",ui.getName());
+                request.setAttribute("surname",ui.getSurname());
+                request.setAttribute("age",ui.getAge());
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
         } else{
             response.sendRedirect("/login.jsp?repeat=1");
         }

@@ -15,7 +15,7 @@ if (repeat != null && repeat.equals("1")) {%>
 <form  action="/trylogin" method="POST">
     <TABLE>
         <TR>
-            <TD>Login:<TD><input type="text" name="login">
+            <TD>Login:<TD><input type="text" name="login" autofocus>
         <TR>
             <TD>Password:<TD><input type="password" name="password">
     </Table>
