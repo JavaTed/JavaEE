@@ -9,6 +9,7 @@ public class UserQuestionnaire {
     private String surname;
     private int age;
     private ArrayList<Answer> answer;
+    UserInfo ui = new UserInfo();
 
     public UserQuestionnaire(String name, String surname, int age, ArrayList<Answer> answer) {
         this.name = name;
@@ -18,6 +19,8 @@ public class UserQuestionnaire {
     }
 
     public class UserInfo{
+        private UserInfo() {
+        }
 
         public String getName() {
             return UserQuestionnaire.this.name;
@@ -33,7 +36,7 @@ public class UserQuestionnaire {
     }
 
     public UserInfo getUserInfo() {
-        return new UserInfo();
+        return ui;
     }
     public String getName() {
         return name;
