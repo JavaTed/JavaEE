@@ -4,7 +4,7 @@
     <c:set var="ro" value="readonly" scope="page"/>
     </c:if>
     <TR>
-        <TD>Name<TD><INPUT type="text" id="fname" name="name" value="${requestScope.name}" ${ro}>
+        <TD>Name<TD><INPUT type="text" id="fname" name="name" value="${requestScope.name}" ${ro} autofocus>
     <TR>
         <TD>Surname<TD><INPUT type="text" id="fsurname" name="surname" value="${requestScope.surname}" ${ro}>
     <TR>

@@ -40,7 +40,6 @@
     <INPUT type="SUBMIT" onclick="if (!checkAll()) return false;">
   <%}%>
   </form>
-  <TR><TD class="main">
     <%if (voted.equals("1")){%>
     <TR><TD class="main">Your answers, dear <%=user%><BR>
               .<%=vs.getUserStat(user)%>

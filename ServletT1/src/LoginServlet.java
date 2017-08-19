@@ -1,3 +1,4 @@
+import com.company.RequestAttributeService;
 import com.company.UserQuestionnaire;
 import com.company.VoteService;
 import com.company.credentials.CredentialService;
@@ -17,17 +18,14 @@ public class LoginServlet extends HttpServlet {
     VoteService vs = VoteService.getInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String login = request.getParameter("login");
+        String user = request.getParameter("login");
         String password = request.getParameter("password");
-        if (credService.checkCredentials(login,password)){
+        if (credService.checkCredentials(user,password)){
             HttpSession session = request.getSession(true);
-            session.setAttribute("user_login", login);
+            session.setAttribute("user_login", user);
 
-            if (vs.isUserVoted(login)){
-                UserQuestionnaire.UserInfo ui = vs.getUserInfo(login);
-                request.setAttribute("name",ui.getName());
-                request.setAttribute("surname",ui.getSurname());
-                request.setAttribute("age",ui.getAge());
+            if (vs.isUserVoted(user)){
+                RequestAttributeService.setAttributes(request, user);
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
@@ -50,4 +48,5 @@ public class LoginServlet extends HttpServlet {
         super.init();
         credService = new CredentialService("c:\\JavaCourse\\files\\users.json");
     }
+
 }

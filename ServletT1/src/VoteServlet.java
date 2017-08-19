@@ -1,4 +1,5 @@
 import com.company.Answer;
+import com.company.RequestAttributeService;
 import com.company.UserQuestionnaire;
 import com.company.VoteService;
 
@@ -29,10 +30,7 @@ public class VoteServlet extends javax.servlet.http.HttpServlet {
                 myAnswers.add(new Answer(user,i,Integer.parseInt(request.getParameter("question"+i))));
             }
             vs.addUserAnswers(user,name,surname,age,myAnswers);
-            UserQuestionnaire.UserInfo ui = vs.getUserInfo(user);
-            request.setAttribute("name",ui.getName());
-            request.setAttribute("surname",ui.getSurname());
-            request.setAttribute("age",ui.getAge());
+            RequestAttributeService.setAttributes(request, user);
         }
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");

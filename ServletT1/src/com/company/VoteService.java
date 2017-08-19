@@ -35,7 +35,8 @@ public class VoteService {
                 .entrySet()
                 .stream()
                 .sorted((t1,t2)->t1.getKey().compareTo(t2.getKey()))
-                .forEach(t->sb.append("<BR>Question "+t.getKey().replace(":",", choice ")+" =  "+t.getValue()+" time(s)"));
+                .map(t->"<BR>Question "+t.getKey().replace(":",", choice ")+" =  "+t.getValue()+" time(s)")
+                .forEach(sb::append);
         return sb;
     }
     public UserQuestionnaire.UserInfo getUserInfo(String user){
